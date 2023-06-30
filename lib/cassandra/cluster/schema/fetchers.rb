@@ -557,7 +557,7 @@ module Cassandra
             Cassandra::ColumnContainer::Options.new(
               table_data['comment'],
               table_data['read_repair_chance'],
-              table_data['local_read_repair_chance'],
+              nil,
               table_data['gc_grace_seconds'],
               table_data['caching'],
               table_data['bloom_filter_fp_chance'] || 0.01,
@@ -727,7 +727,7 @@ module Cassandra
             Cassandra::ColumnContainer::Options.new(
               table_data['comment'],
               table_data['read_repair_chance'],
-              table_data['local_read_repair_chance'],
+              nil,
               table_data['gc_grace_seconds'],
               table_data['caching'],
               table_data['bloom_filter_fp_chance'],
@@ -802,7 +802,7 @@ module Cassandra
             Cassandra::ColumnContainer::Options.new(
               table_data['comment'],
               table_data['read_repair_chance'],
-              table_data['local_read_repair_chance'],
+              nil,
               table_data['gc_grace_seconds'],
               table_data['caching'],
               table_data['bloom_filter_fp_chance'],
@@ -1337,7 +1337,7 @@ module Cassandra
             Cassandra::ColumnContainer::Options.new(
               table_data['comment'],
               table_data['read_repair_chance'],
-              table_data['dclocal_read_repair_chance'],
+              nil,
               table_data['gc_grace_seconds'],
               table_data['caching'],
               table_data['bloom_filter_fp_chance'],

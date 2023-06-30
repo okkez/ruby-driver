@@ -26,8 +26,6 @@ module Cassandra
       # @return [Float] the chance with which a read repair is triggered for this column-container.
       attr_reader :read_repair_chance
       # @return [Float] the cluster local read repair chance for this column-container.
-      attr_reader :local_read_repair_chance
-      # @return [Integer] the tombstone garbage collection grace time in seconds for this column-container.
       attr_reader :gc_grace_seconds
       # @return [Hash] the caching options for this column-container.
       attr_reader :caching
@@ -86,7 +84,6 @@ module Cassandra
                      cdc)
         @comment                     = comment
         @read_repair_chance          = read_repair_chance
-        @local_read_repair_chance    = local_read_repair_chance
         @gc_grace_seconds            = gc_grace_seconds
         @caching                     = caching
         @bloom_filter_fp_chance      = bloom_filter_fp_chance
@@ -139,9 +136,6 @@ module Cassandra
         options << "compaction = #{@compaction_strategy.to_cql}" unless @compaction_strategy.nil?
         options << "compression = #{Util.encode_object(@compression)}" unless @compression.nil?
         options << "crc_check_chance = #{Util.encode_object(@crc_check_chance)}" unless @crc_check_chance.nil?
-        # unless @local_read_repair_chance.nil?
-        #   options << "dclocal_read_repair_chance = #{Util.encode_object(@local_read_repair_chance)}"
-        # end
         unless @default_time_to_live.nil?
           options << "default_time_to_live = #{Util.encode_object(@default_time_to_live)}"
         end
@@ -166,7 +160,6 @@ module Cassandra
         other.is_a?(Options) &&
           @comment == other.comment &&
           @read_repair_chance == other.read_repair_chance &&
-          @local_read_repair_chance == other.local_read_repair_chance &&
           @gc_grace_seconds == other.gc_grace_seconds &&
           @caching == other.caching &&
           @bloom_filter_fp_chance == other.bloom_filter_fp_chance &&
