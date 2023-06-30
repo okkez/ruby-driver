@@ -139,9 +139,9 @@ module Cassandra
         options << "compaction = #{@compaction_strategy.to_cql}" unless @compaction_strategy.nil?
         options << "compression = #{Util.encode_object(@compression)}" unless @compression.nil?
         options << "crc_check_chance = #{Util.encode_object(@crc_check_chance)}" unless @crc_check_chance.nil?
-        unless @local_read_repair_chance.nil?
-          options << "dclocal_read_repair_chance = #{Util.encode_object(@local_read_repair_chance)}"
-        end
+        # unless @local_read_repair_chance.nil?
+        #   options << "dclocal_read_repair_chance = #{Util.encode_object(@local_read_repair_chance)}"
+        # end
         unless @default_time_to_live.nil?
           options << "default_time_to_live = #{Util.encode_object(@default_time_to_live)}"
         end
